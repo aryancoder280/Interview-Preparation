@@ -1,0 +1,48 @@
+//CPP file
+
+#include<bits/stdc++.h>
+using namespace std;
+typedef long long int ll;
+
+ll fun(ll arr[],ll n)
+{
+        ll sum=0,ans=0;
+        unordered_map<ll,ll>mp;
+        for(ll i=0;i<n;i++)
+        {
+            sum+=arr[i];
+            if(sum==0)
+            {
+                ans++;
+            }
+             if(mp.find(sum)!=mp.end())
+            {
+             ans+=mp[sum];
+             mp[sum]++;
+            }
+            else
+            {
+              mp[sum]=1;    
+            }
+        }
+        return ans;
+}
+
+int main()
+{
+    ll t;
+    cin>>t;
+    while(t--)
+    {
+        ll n;
+        cin>>n;
+        ll arr[n];
+        for(ll i=0;i<n;i++)
+        {
+            cin>>arr[i];
+        }
+
+       ll cnt = fun(arr,n);
+        cout<<cnt<<endl;
+    }
+}
