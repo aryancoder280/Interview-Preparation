@@ -1,0 +1,64 @@
+//CPP file
+#include<bits/stdc++.h>
+#define M 1000000007
+using namespace std;
+
+typedef long long int ll;
+
+int main()
+{
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        int n;
+        cin>>n;
+        int arr[n];
+        for(int i=0;i<n;i++)
+            cin>>arr[i];
+        int l=0,r=n-1;
+        int k=n-1;
+        while(k>=l)
+        {
+            //cout<<l<<" "<<r<<" "<<k<<" "<<arr[k]<<endl;
+            if(arr[k]==1)
+            {
+                k--;
+                continue;
+            }
+            else if(arr[k]==0)
+            {
+                while(l<k&&arr[l]==0)
+                    l++;
+              //  cout<<00<<" "<<l<<" "<<arr[l]<<" "<<k<<endl;
+                if(arr[l]!=0)
+                {
+                    swap(arr[l],arr[k]);
+                }
+                else
+                    k--;
+
+            }
+            else
+            {
+                //cout<<k<<" "<<r<<endl;
+                while(r>k&&arr[r]==2)
+                    r--;
+                //cout<<22<<" "<<r<<" "<<arr[r]<<" "<<k<<endl;
+                if(arr[r]!=2)
+                {
+                    swap(arr[r],arr[k]);
+                }
+                else
+                    {
+                  //      cout<<"INside\n";
+                        k--;
+
+                    }
+            }
+        }
+        for(auto x:arr)
+            cout<<x<<" ";
+        cout<<endl;
+    }
+}
