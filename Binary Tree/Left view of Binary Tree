@@ -1,0 +1,21 @@
+void leftView(Node *root)
+{
+      if(!root)
+        {
+            return ;
+            
+        }
+    else 
+    {
+        cout<<root->data<<" ";
+        if(root->left)
+        {
+            return  leftView(root->left);
+        }
+        else
+        {
+            return leftView(root->right);
+        }
+        
+    }
+}
