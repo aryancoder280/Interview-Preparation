@@ -1,0 +1,47 @@
+void printSpiral(Node *root)
+{
+    if(!root)
+    return ;
+    
+    stack<Node*>l,r;
+    r.push(root);
+    while(!r.empty() || !l.empty())
+    {
+        if(!l.empty())
+        {
+            while(!l.empty())
+            {
+               Node*temp = l.top();
+               l.pop();
+               cout<<temp->data<<" ";
+               if(temp->left)
+               {
+                   r.push(temp->left);
+               }
+               if(temp->right)
+               {
+                   r.push(temp->right);
+               }
+               
+            }
+        }
+        else if(!r.empty())
+        {
+            while(!r.empty())
+            {
+                Node* temp = r.top();
+                r.pop();
+                cout<<temp->data<<" ";
+                if(temp->right)
+                {
+                    l.push(temp->right);
+                }
+                if(temp->left)
+                {
+                    l.push(temp->left);
+                }
+            }
+        }
+    }
+
+}
