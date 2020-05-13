@@ -1,0 +1,27 @@
+bool check(Node* root, Node*temp)
+{
+    if(!temp && ! root)
+    {
+        return true;
+    }
+    else if(!temp || !root)
+    {
+        return false;
+    }
+    else
+    {
+        return (root->data == temp->data) && check(root->left,temp->right) && check(root->right,temp->left);  
+    }
+}
+
+bool isSymmetric(struct Node* root)
+{
+	Node * temp = root;
+	
+	 if(check(root,temp))
+	 {
+	     return true;
+	 }
+	 else
+	    return false;
+}
